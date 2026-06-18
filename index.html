@@ -27,7 +27,7 @@
         }
         .header {
             text-align: center;
-            padding: 40px 0;
+            padding: 45px 20px;
             background: linear-gradient(135deg, #001f42 0%, #003366 100%);
             color: white;
             border-radius: 16px;
@@ -53,7 +53,7 @@
             max-width: 800px;
             margin: 0 auto;
             color: #e0e6ed;
-            padding: 0 20px;
+            line-height: 1.6;
         }
         .section-title {
             text-align: center;
@@ -78,7 +78,6 @@
             margin-bottom: 40px;
             font-size: 1.1rem;
         }
-        /* Grid Layout for Initiatives */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -90,17 +89,22 @@
             border-radius: 14px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
         }
         .card-img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
             border-bottom: 1px solid #e1e4e8;
+            transition: transform 0.5s ease;
+        }
+        .card:hover .card-img {
+            transform: scale(1.05);
         }
         .card-content {
             padding: 24px;
@@ -128,7 +132,6 @@
             font-size: 0.95rem;
             line-height: 1.5;
         }
-        /* Team Section Layout */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -151,11 +154,6 @@
             border: 3px solid var(--primary);
             margin-bottom: 15px;
             background: white;
-        }
-        .team-card h4 {
-            margin: 5px 0;
-            font-size: 1.2rem;
-            color: var(--text-dark);
         }
         .team-role {
             margin: 0;
@@ -188,6 +186,41 @@
         .btn:hover {
             background-color: #001f42;
         }
+
+        /* Cheeky Lion Mini-Game Widget Styles */
+        #lion-game-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 65px;
+            height: 65px;
+            background: #ffffff;
+            border: 3px solid var(--secondary);
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            z-index: 9999;
+            user-select: none;
+            transition: transform 0.1s ease;
+        }
+        #game-score-board {
+            position: fixed;
+            bottom: 95px;
+            right: 20px;
+            background: rgba(0, 40, 85, 0.9);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: none;
+            z-index: 9999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
@@ -195,17 +228,17 @@
 <div class="container">
 
     <div class="header">
-        <img src="images/logo.jpg" alt="Leo Club Of Pune Harmony Logo" class="logo-img">
+        <img src="Screenshot 2026-06-14 175026.jpg" alt="Leo Club Of Pune Harmony Logo" class="logo-img">
         <h1>Leo Club Of Pune Harmony</h1>
         <p>A dynamic, youth-led community service network focused on uplifting individuals, engineering solutions, and inspiring continuous communal service across Pune.</p>
     </div>
 
     <h2 class="section-title">Annual Action Initiatives</h2>
-    <p class="section-subtitle">Our complete 12-month community impact roadmap</p>
+    <p class="section-subtitle">Hover over our calendar roadmap cards to interact with our impact journey</p>
 
     <div class="grid">
         <div class="card">
-            <img src="images/01_old_age.jpg" alt="Old Age Home Visits" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.14 AM (1).jpeg" alt="Old Age Home Visits" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 01</span>
                 <h3>Old Age Home Visits</h3>
@@ -214,7 +247,7 @@
         </div>
 
         <div class="card">
-            <img src="images/02_learning_spaces.jpg" alt="Rebuilding Learning Spaces" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.14 AM.jpeg" alt="Rebuilding Learning Spaces" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 02</span>
                 <h3>Rebuilding Learning Spaces</h3>
@@ -223,43 +256,43 @@
         </div>
 
         <div class="card">
-            <img src="images/03_book_recycling.jpg" alt="Book Recycling" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.15 AM (1).jpeg" alt="Book Recycling" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 03</span>
-                <h3>Book Recycling & Sharing</h3>
+                <h3>Book Recycling & Sharing Network</h3>
                 <p>Driving continuous collection campaigns to recycle unused books and supplies, distributing them straight to underprivileged students.</p>
             </div>
         </div>
 
         <div class="card">
-            <img src="images/04_hair_donation.jpg" alt="Hair Donation" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.15 AM (2).jpeg" alt="Hair Donation" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 04</span>
-                <h3>Hair Donation Support</h3>
+                <h3>Hair Donation for Cancer Patients</h3>
                 <p>Spreading public awareness regarding clinical wig requirements for cancer patients, coordinating healthy hair collections.</p>
             </div>
         </div>
 
         <div class="card">
-            <img src="images/05_pune_awareness.jpg" alt="Pune Awareness Sign" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.15 AM.jpeg" alt="Pune Awareness Sign" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 05</span>
-                <h3>Pune Awareness Signs</h3>
+                <h3>Pune Awareness Sign Initiative</h3>
                 <p>Creating custom environmental sign installations and messaging cards around the city to build structural public awareness on sustainability issues.</p>
             </div>
         </div>
 
         <div class="card">
-            <img src="images/06_kitchen_network.jpg" alt="Healthy Homemaker Network" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.16 AM (2).jpeg" alt="Healthy Homemaker Network" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 06</span>
-                <h3>Healthy Homemaker Network</h3>
+                <h3>Healthy Homemaker Kitchen Network</h3>
                 <p>Connecting passionate homemakers directly with local food markets to provide homemade meals, scaling micro-entrepreneurship channels for women.</p>
             </div>
         </div>
 
         <div class="card">
-            <img src="images/07_rain_readiness.jpg" alt="Rain Readiness Stations" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.16 AM.jpeg" alt="Rain Readiness Stations" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 07</span>
                 <h3>Rain Readiness Stations</h3>
@@ -268,16 +301,16 @@
         </div>
 
         <div class="card">
-            <img src="images/08_local_heroes.jpg" alt="Local Heroes" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.17 AM (1).jpeg" alt="Local Heroes" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 08</span>
-                <h3>Local Heroes Discovery</h3>
+                <h3>Local Heroes – Talent Discovery Program</h3>
                 <p>Discovering gifted youth and community figures from fragile locations, creating public spotlights, and connecting them to educational scholarships.</p>
             </div>
         </div>
 
         <div class="card">
-            <img src="images/09_herspark.jpg" alt="HerSpark" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.17 AM (2).jpeg" alt="HerSpark" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 09</span>
                 <h3>HerSpark</h3>
@@ -286,7 +319,7 @@
         </div>
 
         <div class="card">
-            <img src="images/10_lost_and_found.jpg" alt="Lost & Found" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.17 AM.jpeg" alt="Lost & Found" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 10</span>
                 <h3>Lost & Found to Loved & Used</h3>
@@ -295,7 +328,7 @@
         </div>
 
         <div class="card">
-            <img src="images/11_beat_the_heat.jpg" alt="Beat the Heat" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.18 AM (1).jpeg" alt="Beat the Heat" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 11</span>
                 <h3>Beat the Heat</h3>
@@ -304,7 +337,7 @@
         </div>
 
         <div class="card">
-            <img src="images/12_access_bridge.jpg" alt="Access Bridge" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.18 AM.jpeg" alt="Access Bridge" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 12</span>
                 <h3>Access Bridge</h3>
@@ -314,30 +347,26 @@
     </div>
 
     <h2 class="section-title">Our Leadership Team</h2>
-    <p class="section-subtitle">The executive panel behind the harmony and community action</p>
+    <p class="section-subtitle">The executive council steering regional community impact parameters</p>
 
     <div class="team-grid">
         <div class="team-card">
-            <img src="images/team_president.jpg" alt="Club President" class="team-avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
-            <h4>[President Name]</h4>
+            <img src="WhatsApp Image 2026-06-18 at 4.08.19 AM (1).jpeg" alt="Club Leader" class="team-avatar">
             <p class="team-role">President</p>
         </div>
 
         <div class="team-card">
-            <img src="images/team_vp.jpg" alt="Vice President" class="team-avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
-            <h4>[Vice President Name]</h4>
+            <img src="WhatsApp Image 2026-06-18 at 4.08.19 AM (2).jpeg" alt="Club Leader" class="team-avatar">
             <p class="team-role">Vice President</p>
         </div>
 
         <div class="team-card">
-            <img src="images/team_secretary.jpg" alt="Secretary" class="team-avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
-            <h4>[Secretary Name]</h4>
+            <img src="WhatsApp Image 2026-06-18 at 4.08.19 AM.jpeg" alt="Club Leader" class="team-avatar">
             <p class="team-role">Secretary</p>
         </div>
 
         <div class="team-card">
-            <img src="images/team_treasurer.jpg" alt="Treasurer" class="team-avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
-            <h4>[Treasurer Name]</h4>
+            <img src="WhatsApp Image 2026-06-18 at 4.09.22 AM.jpeg" alt="Club Leader" class="team-avatar">
             <p class="team-role">Treasurer</p>
         </div>
     </div>
@@ -349,6 +378,36 @@
     </div>
 
 </div>
+
+<div id="game-score-board">🦁 Caught: 0 times!</div>
+<div id="lion-game-widget" title="Click to catch me!">🦁</div>
+
+<script>
+    // Cheeky Lion Catching Game Script
+    const lion = document.getElementById('lion-game-widget');
+    const scoreboard = document.getElementById('game-score-board');
+    let score = 0;
+
+    lion.addEventListener('mouseover', () => {
+        // Run away when the cursor moves near it!
+        const randomX = Math.floor(Math.random() * (window.innerWidth - 80));
+        const randomY = Math.floor(Math.random() * (window.innerHeight - 80));
+        
+        lion.style.position = 'fixed';
+        lion.style.left = randomX + 'px';
+        lion.style.top = randomY + 'px';
+    });
+
+    lion.addEventListener('click', () => {
+        score++;
+        scoreboard.style.display = 'block';
+        scoreboard.innerText = `🦁 Caught: ${score} time${score > 1 ? 's' : ''}! 🎉`;
+        lion.style.transform = 'scale(1.4)';
+        setTimeout(() => {
+            lion.style.transform = 'scale(1)';
+        }, 200);
+    });
+</script>
 
 </body>
 </html>

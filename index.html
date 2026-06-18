@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Leo Club Of Pune Harmony</title>
+    <style>
+        :root {
+            --primary: #002855;
+            --secondary: #d4af37;
+            --text-dark: #24292e;
+            --text-muted: #586069;
+            --bg-light: #f6f8fa;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #001f42 0%, #003366 100%);
+            color: white;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .logo-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--secondary);
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .header h1 {
+            margin: 20px 0 10px 0;
+            font-size: 2.5rem;
+            letter-spacing: 0.5px;
+        }
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #e0e6ed;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-top: 60px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+        /* Grid Layout for Initiatives */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #e1e4e8;
+        }
+        .card-content {
+            padding: 24px;
+        }
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+        .card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+        .card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        /* Team Section Layout */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .team-card {
+            text-align: center;
+            background: var(--bg-light);
+            border: 1px solid #e1e4e8;
+            padding: 30px 20px;
+            border-radius: 14px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            margin-bottom: 15px;
+            background: white;
+        }
+        .team-card h4 {
+            margin: 5px 0;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+        .team-role {
+            margin: 0;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .cta-box {
+            text-align: center;
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 16px;
+            margin-top: 60px;
+            border: 1px dashed #ced4da;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background 0.2s;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background-color: #001f42;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <img src="images/logo.jpg" alt="Leo Club Of Pune Harmony Logo" class="logo-img">
+        <h1>Leo Club Of Pune Harmony</h1>
+        <p>A dynamic, youth-led community service network focused on uplifting individuals, engineering solutions, and inspiring continuous communal service across Pune.</p>
+    </div>
+
+    <h2 class="section-title">Annual Action Initiatives</h2>
+    <p class="section-subtitle">Our complete 12-month community impact roadmap</p>
+
+    <div class="grid">
+        <div class="card">
+            <img src="images/01_old_age.jpg" alt="Old Age Home Visits" class="card-img">
+            <div class="card-content">
+                <span class="badge">Initiative 01</span>
+                <h3>Old Age Home Visits</h3>
+                <p>Organizing uplifting interactions and recreational games to connect with senior citizens, offering companionship and joy.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/02_learning_spaces.jpg" alt="Rebuilding Learning Spaces" class="card-img">
+            <div class="card-content">
+                <span class="badge">Initiative 02</span>
+                <h3>Rebuilding Learning Spaces</h3>
+                <p>Conducting workshops to help students optimize, clean, and re-engineer their environments into healthy and sustainable places for education.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/03_book_recycling.jpg" alt="Book Recycling" class="card-img">
+            <div class="card-content">
+                <span class="badge">Initiative 03</span>
+                <h3>Book Recycling & Sharing</h3>
+                <p>Driving continuous collection campaigns to recycle unused books and supplies, distributing them straight to underprivileged students.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/04_hair_donation.jpg" alt="Hair Donation" class="card-img">
+            <div class="card-content">
+                <span class="badge">Initiative 04</span>
+                <h3>Hair Donation Support</h3>
+                <p>Spreading public awareness regarding clinical wig requirements for cancer patients, coordinating healthy hair collections.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/05_pune_awareness.jpg" alt="Pune Awareness Sign" class="card-img">
+            <div class="card-content">
+                <span class="badge">Initiative 05</span>
+                <h3>Pune Awareness Signs</h3>
+                <p>Creating custom environmental sign installations and messaging cards around the city to build structural public awareness on sustainability issues.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/06_kitchen_network.jpg" alt="Healthy Homemaker Network" class="card-img">
+            <div class="card-content">
+                <span class="badge">Initiative 06</span>
+                <h3>Healthy Homemaker Network</h3>
+                <p>Connecting passionate homemakers directly with local food markets to provide homemade meals, scaling micro-entrepreneurship channels for women.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/07_rain_readiness.jpg" alt="Rain Readiness Stations" class="card-img">
+            <div class="card-content">
+                <span class="badge">Initiative 07</span>
+                <h3>Rain Readiness Stations</h3>
+                <p>Deploying specialized seasonal assistance hubs carrying umbrellas, protective raincoats, drinking water, first-aid tools, and emergency charging systems.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/08_local_heroes.jpg" alt="Local Heroes" class="card-img">
+            <div class="card-content">
+                <span class="badge">Initiative 08</span>
+                <h3>Local Heroes Discovery</h3>
+                <p>Discovering gifted youth and community figures from fragile locations, creating public spotlights, and connecting them to educational scholarships.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/09_herspark.jpg" alt="HerSpark" class="card-img">
+            <div class="card-content">
+                <span class="badge">Initiative 09</span>
+                <h3>HerSpark</h3>
+                <p>Mentoring female founders through strategic business workshops, idea structuring setups, and practical assistance in scaling concepts to ventures.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/10_lost_and_found.jpg" alt="Lost & Found" class="card-img">
+            <div class="card-content">
+                <span class="badge">Initiative 10</span>
+                <h3>Lost & Found to Loved & Used</h3>
+                <p>Systematically collecting, sanitizing, and sorting wearable clothing, bags, and toys to distribute them to communities while reducing waste footprints.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/11_beat_the_heat.jpg" alt="Beat the Heat" class="card-img">
+            <div class="card-content">
+                <span class="badge">Initiative 11</span>
+                <h3>Beat the Heat</h3>
+                <p>An applied engineering workshop teaching students scientific first-principles to craft working cooling units out of basic everyday resources.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/12_access_bridge.jpg" alt="Access Bridge" class="card-img">
+            <div class="card-content">
+                <span class="badge">Initiative 12</span>
+                <h3>Access Bridge</h3>
+                <p>Hosting localized training support helping individuals fill out critical state forms, applications, and navigate modern digital layouts.</p>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">Our Leadership Team</h2>
+    <p class="section-subtitle">The executive panel behind the harmony and community action</p>
+
+    <div class="team-grid">
+        <div class="team-card">
+            <img src="images/team_president.jpg" alt="Club President" class="team-avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+            <h4>[President Name]</h4>
+            <p class="team-role">President</p>
+        </div>
+
+        <div class="team-card">
+            <img src="images/team_vp.jpg" alt="Vice President" class="team-avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+            <h4>[Vice President Name]</h4>
+            <p class="team-role">Vice President</p>
+        </div>
+
+        <div class="team-card">
+            <img src="images/team_secretary.jpg" alt="Secretary" class="team-avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+            <h4>[Secretary Name]</h4>
+            <p class="team-role">Secretary</p>
+        </div>
+
+        <div class="team-card">
+            <img src="images/team_treasurer.jpg" alt="Treasurer" class="team-avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+            <h4>[Treasurer Name]</h4>
+            <p class="team-role">Treasurer</p>
+        </div>
+    </div>
+
+    <div class="cta-box">
+        <h2>Join Us in Making a Difference</h2>
+        <p>Whether you want to offer resources, volunteer your time for our upcoming calendar tracks, or find out more about local chapter operations, we'd love to connect with you.</p>
+        <a href="mailto:leoclubpuneharmony@gmail.com" class="btn">📬 Get In Touch</a>
+    </div>
+
+</div>
+
+</body>
+</html>

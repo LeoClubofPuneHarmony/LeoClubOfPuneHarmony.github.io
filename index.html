@@ -89,7 +89,6 @@
             border-radius: 14px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            cursor: pointer;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
         }
         .card:hover {
@@ -101,10 +100,6 @@
             height: 220px;
             object-fit: cover;
             border-bottom: 1px solid #e1e4e8;
-            transition: transform 0.5s ease;
-        }
-        .card:hover .card-img {
-            transform: scale(1.05);
         }
         .card-content {
             padding: 24px;
@@ -187,7 +182,7 @@
             background-color: #001f42;
         }
 
-        /* Cheeky Lion Mini-Game Widget Styles */
+        /* Running Lion Widget */
         #lion-game-widget {
             position: fixed;
             bottom: 20px;
@@ -205,13 +200,13 @@
             font-size: 32px;
             z-index: 9999;
             user-select: none;
-            transition: transform 0.1s ease;
+            transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         #game-score-board {
             position: fixed;
             bottom: 95px;
             right: 20px;
-            background: rgba(0, 40, 85, 0.9);
+            background: rgba(0, 40, 85, 0.95);
             color: #fff;
             padding: 6px 12px;
             border-radius: 8px;
@@ -228,7 +223,7 @@
 <div class="container">
 
     <div class="header">
-        <img src="Screenshot 2026-06-14 175026.jpg" alt="Leo Club Of Pune Harmony Logo" class="logo-img">
+        <img src="Screenshot 2026-06-14 175026.jpg" alt="Leo Club Logo" class="logo-img">
         <h1>Leo Club Of Pune Harmony</h1>
         <p>A dynamic, youth-led community service network focused on uplifting individuals, engineering solutions, and inspiring continuous communal service across Pune.</p>
     </div>
@@ -247,7 +242,7 @@
         </div>
 
         <div class="card">
-            <img src="WhatsApp Image 2026-06-18 at 4.08.14 AM.jpeg" alt="Rebuilding Learning Spaces" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.14 AM.jpeg" alt="Learning Spaces" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 02</span>
                 <h3>Rebuilding Learning Spaces</h3>
@@ -274,7 +269,7 @@
         </div>
 
         <div class="card">
-            <img src="WhatsApp Image 2026-06-18 at 4.08.15 AM.jpeg" alt="Pune Awareness Sign" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.15 AM.jpeg" alt="Pune Signs" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 05</span>
                 <h3>Pune Awareness Sign Initiative</h3>
@@ -283,7 +278,7 @@
         </div>
 
         <div class="card">
-            <img src="WhatsApp Image 2026-06-18 at 4.08.16 AM (2).jpeg" alt="Healthy Homemaker Network" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.16 AM (2).jpeg" alt="Kitchen Network" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 06</span>
                 <h3>Healthy Homemaker Kitchen Network</h3>
@@ -292,7 +287,7 @@
         </div>
 
         <div class="card">
-            <img src="WhatsApp Image 2026-06-18 at 4.08.16 AM.jpeg" alt="Rain Readiness Stations" class="card-img">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.16 AM.jpeg" alt="Rain Readiness" class="card-img">
             <div class="card-content">
                 <span class="badge">Initiative 07</span>
                 <h3>Rain Readiness Stations</h3>
@@ -351,22 +346,22 @@
 
     <div class="team-grid">
         <div class="team-card">
-            <img src="WhatsApp Image 2026-06-18 at 4.08.19 AM (1).jpeg" alt="Club Leader" class="team-avatar">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.19 AM (1).jpeg" alt="President" class="team-avatar">
             <p class="team-role">President</p>
         </div>
 
         <div class="team-card">
-            <img src="WhatsApp Image 2026-06-18 at 4.08.19 AM (2).jpeg" alt="Club Leader" class="team-avatar">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.19 AM (2).jpeg" alt="Vice President" class="team-avatar">
             <p class="team-role">Vice President</p>
         </div>
 
         <div class="team-card">
-            <img src="WhatsApp Image 2026-06-18 at 4.08.19 AM.jpeg" alt="Club Leader" class="team-avatar">
+            <img src="WhatsApp Image 2026-06-18 at 4.08.19 AM.jpeg" alt="Secretary" class="team-avatar">
             <p class="team-role">Secretary</p>
         </div>
 
         <div class="team-card">
-            <img src="WhatsApp Image 2026-06-18 at 4.09.22 AM.jpeg" alt="Club Leader" class="team-avatar">
+            <img src="WhatsApp Image 2026-06-18 at 4.09.22 AM.jpeg" alt="Treasurer" class="team-avatar">
             <p class="team-role">Treasurer</p>
         </div>
     </div>
@@ -380,22 +375,21 @@
 </div>
 
 <div id="game-score-board">🦁 Caught: 0 times!</div>
-<div id="lion-game-widget" title="Click to catch me!">🦁</div>
+<div id="lion-game-widget" title="Catch me!">🦁</div>
 
 <script>
-    // Cheeky Lion Catching Game Script
     const lion = document.getElementById('lion-game-widget');
     const scoreboard = document.getElementById('game-score-board');
     let score = 0;
 
     lion.addEventListener('mouseover', () => {
-        // Run away when the cursor moves near it!
-        const randomX = Math.floor(Math.random() * (window.innerWidth - 80));
-        const randomY = Math.floor(Math.random() * (window.innerHeight - 80));
+        const padding = 100;
+        const randomX = Math.floor(Math.random() * (window.innerWidth - padding));
+        const randomY = Math.floor(Math.random() * (window.innerHeight - padding));
         
         lion.style.position = 'fixed';
-        lion.style.left = randomX + 'px';
-        lion.style.top = randomY + 'px';
+        lion.style.left = Math.max(20, randomX) + 'px';
+        lion.style.top = Math.max(20, randomY) + 'px';
     });
 
     lion.addEventListener('click', () => {
@@ -403,9 +397,7 @@
         scoreboard.style.display = 'block';
         scoreboard.innerText = `🦁 Caught: ${score} time${score > 1 ? 's' : ''}! 🎉`;
         lion.style.transform = 'scale(1.4)';
-        setTimeout(() => {
-            lion.style.transform = 'scale(1)';
-        }, 200);
+        setTimeout(() => { lion.style.transform = 'scale(1)'; }, 150);
     });
 </script>
 

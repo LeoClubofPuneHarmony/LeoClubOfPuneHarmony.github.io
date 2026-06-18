@@ -296,9 +296,9 @@
   </footer>
   <!-- Lion Snake Game Widget -->
   <div id="lion-game-widget" title="Play Lion Snake">🦁</div>
-  <div id="lion-game-overlay" style="display:none;">
+  <div id="lion-game-overlay" style="display:flex;">
     <div id="lion-game-box">
-      <canvas id="lion-canvas" width="300" height="300"></canvas>
+      <canvas id="lion-canvas" width="200" height="200" data-mode="mini"></canvas>
       <div style="display:flex;gap:8px;justify-content:center;margin-top:10px;">
         <button id="lion-start">Start</button>
         <button id="lion-close">Close</button>
@@ -308,9 +308,10 @@
   </div>
   <style>
     #lion-game-widget{position:fixed;right:18px;bottom:18px;width:60px;height:60px;border-radius:50%;background:#fff;border:3px solid var(--secondary);display:flex;align-items:center;justify-content:center;font-size:30px;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,0.15);z-index:9999}
-    #lion-game-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);z-index:10000}
-    #lion-game-box{background:#fff;padding:18px;border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,0.2);display:flex;flex-direction:column;align-items:center}
-    #lion-canvas{background:linear-gradient(180deg,#f8fbff,#eef6ff);border-radius:8px;border:1px solid rgba(0,0,0,0.06)}
+    /* mini overlay positioned in the corner */
+    #lion-game-overlay{position:fixed;right:18px;bottom:90px;width:auto;height:auto;display:flex;align-items:center;justify-content:flex-end;background:transparent;z-index:10000}
+    #lion-game-box{background:#fff;padding:10px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,0.12);display:flex;flex-direction:column;align-items:center;width:160px}
+    #lion-canvas{background:linear-gradient(180deg,#f8fbff,#eef6ff);border-radius:8px;border:1px solid rgba(0,0,0,0.06);width:140px;height:140px}
     #lion-start,#lion-close{padding:8px 12px;border-radius:8px;border:1px solid rgba(15,23,42,0.08);background:#fff;cursor:pointer}
   </style>
   <script>
@@ -339,10 +340,14 @@
       class LionSnake{
         constructor(canvas,ctx,scoreEl){
           this.canvas=canvas; this.ctx=ctx; this.scoreEl=scoreEl;
-          this.cell=20; this.cols=15; this.rows=15; this.width=this.cell*this.cols; this.height=this.cell*this.rows;
+          // support mini mode when canvas has data-mode="mini"
+          const mini = canvas.dataset.mode === 'mini';
+          if(mini){ this.cell=14; this.cols=10; this.rows=10; this.speed=160; }
+          else { this.cell=20; this.cols=15; this.rows=15; this.speed=140; }
+          this.width=this.cell*this.cols; this.height=this.cell*this.rows;
           this.canvas.width=this.width; this.canvas.height=this.height;
           this.reset();
-          this.keyQueue=[]; this._tick=null; this.speed=150;
+          this.keyQueue=[]; this._tick=null;
           this.bind();
         }
         bind(){
@@ -384,7 +389,7 @@
         }
         draw(){ const ctx=this.ctx, c=this.cell; ctx.clearRect(0,0,this.width,this.height);
           // draw food
-          ctx.fillStyle='#D4AF37'; ctx.fillRect(this.food.x*c+4, this.food.y*c+4, c-8, c-8);
+          ctx.fillStyle='#D4AF37'; ctx.fillRect(this.food.x*c+Math.max(2,c*0.12), this.food.y*c+Math.max(2,c*0.12), c-Math.max(4,c*0.24), c-Math.max(4,c*0.24));
           // draw body
           ctx.fillStyle='#87c165'; for(let i=1;i<this.snake.length;i++){ const s=this.snake[i]; ctx.fillRect(s.x*c+2, s.y*c+2, c-4, c-4); }
           // draw lion head emoji

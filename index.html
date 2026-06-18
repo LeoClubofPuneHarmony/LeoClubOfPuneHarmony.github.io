@@ -1,199 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Leo Club Of Pune Harmony</title>
-    <style>
-        :root {
-            --primary: #002855;
-            --secondary: #d4af37;
-            --text-dark: #24292e;
-            --text-muted: #586069;
-            --bg-light: #f6f8fa;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .header {
-            text-align: center;
-            padding: 45px 20px;
-            background: linear-gradient(135deg, #001f42 0%, #003366 100%);
-            color: white;
-            border-radius: 16px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .logo-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--secondary);
-            background: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        .header h1 {
-            margin: 20px 0 10px 0;
-            font-size: 2.5rem;
-            letter-spacing: 0.5px;
-        }
-        .header p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            color: #e0e6ed;
-            line-height: 1.6;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-top: 60px;
-            margin-bottom: 10px;
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary);
-            margin: 10px auto 0 auto;
-            border-radius: 2px;
-        }
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            font-size: 1.1rem;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-        .card {
-            background: #ffffff;
-            border: 1px solid #e1e4e8;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-        }
-        .card-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-bottom: 1px solid #e1e4e8;
-        }
-        .card-content {
-            padding: 24px;
-        }
-        .badge {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 4px 12px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            letter-spacing: 0.5px;
-        }
-        .card h3 {
-            margin: 0 0 10px 0;
-            color: var(--primary);
-            font-size: 1.3rem;
-        }
-        .card p {
-            margin: 0;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .team-card {
-            text-align: center;
-            background: var(--bg-light);
-            border: 1px solid #e1e4e8;
-            padding: 30px 20px;
-            border-radius: 14px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        }
-        .team-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary);
-            margin-bottom: 15px;
-            background: white;
-        }
-        .team-role {
-            margin: 0;
-            color: var(--secondary);
-            font-weight: bold;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .footer-box {
-            text-align: center;
-            background: var(--bg-light);
-            padding: 40px;
-            border-radius: 16px;
-            margin-top: 60px;
-            border: 1px dashed #ced4da;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leo Club Of Pune Harmony</title>
+  <style>
+    :root {
+      --primary: #002855;
+      --secondary: #d4af37;
+      --background: #f4f8ff;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #556080;
+      --radius: 18px;
+      --shadow: 0 20px 40px rgba(0, 36, 85, 0.08);
+    }
 
-        /* Running Lion Widget */
-        #lion-game-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 65px;
-            height: 65px;
-            background: #ffffff;
-            border: 3px solid var(--secondary);
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            z-index: 9999;
-            user-select: none;
-            transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        #game-score-board {
-            position: fixed;
-            bottom: 95px;
-            right: 20px;
-            background: rgba(0, 40, 85, 0.95);
-            color: #fff;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: linear-gradient(180deg, #eff5ff 0%, #f9fbff 100%);
+    }
+
+    header {
+      background: radial-gradient(circle at top, rgba(212, 175, 55, 0.15), transparent 42%),
+                  linear-gradient(135deg, #002855 0%, #00408c 100%);
+      color: #fff;
+      padding: 80px 24px 56px;
+      text-align: center;
+    }
+
+    .hero {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 5vw, 4.4rem);
+      margin: 0;
+      letter-spacing: -0.04em;
+      line-height: 1.02;
+    }
+
+    .hero p {
+      margin: 24px auto 0;
+      max-width: 760px;
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .hero a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 32px;
+      padding: 16px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      background: #d4af37;
+      color: #002855;
+      font-weight: 700;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .hero a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 30px rgba(0, 40, 85, 0.15);
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
+    }
+
+    .section {
+      margin-top: 48px;
+      padding: 40px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 0 auto 20px;
+      max-width: 760px;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      color: var(--primary);
+    }
+
+    .section-description {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 32px;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .card h3 {
+      margin: 0 0 16px;
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .full-width-banner {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .full-width-banner h2 {
+      margin: 0 0 16px;
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      line-height: 1.08;
+    }
+
+    .full-width-banner p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 520px;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0;
+    }
+
+    .feature-list li {
+      margin-bottom: 14px;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      display: inline-block;
+      width: 26px;
+      color: var(--secondary);
+      font-weight: 700;
+      margin-right: 12px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 26px 24px 40px;
+    }
+
+    @media (max-width: 860px) {
+      .full-width-banner {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <p style="text-transform: uppercase; letter-spacing: 0.2em; font-size:0.95rem; opacity:0.85; margin-bottom:18px;">Welcome to Leo Club Of Pune Harmony</p>
+      <h1>Building stronger communities through service, leadership, and friendship.</h1>
+      <p>Leo Club of Pune Harmony is a youth-led service group dedicated to empowering young people, supporting local causes, and making a positive impact in Pune and beyond.</p>
+      <a href="#connect">Join our mission</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h2 class="section-title">Who We Are</h2>
+      <p class="section-description">We are a community of students and young professionals who come together to serve others, grow as leaders, and create meaningful friendships. Our club organizes social events, outreach programs, educational initiatives, and charity activities across Pune.</p>
+    </section>
+
+    <section class="section">
+      <div class="grid">
+        <div class="card">
+          <h3>Community Service</h3>
+          <p>We organize regular drives, cleanups, and outreach events that help vulnerable families, children, and seniors in our city.</p>
+        </div>
+        <div class="card">
+          <h3>Youth Leadership</h3>
+          <p>Members receive leadership training, public speaking practice, and project planning experience to become stronger community leaders.</p>
+        </div>
+        <div class="card">
+          <h3>Friendship and Growth</h3>
+          <p>Our club provides a warm and welcoming environment where members connect, learn, and support each other while making a difference.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="full-width-banner">
+        <div>
+          <h2>Our Current Focus</h2>
+          <p>We are devoted to uplifting local schools, supporting health awareness campaigns, and organizing activities that celebrate culture, harmony, and social responsibility.</p>
+          <ul class="feature-list">
+            <li>Support education and literacy projects.</li>
+            <li>Promote health and wellness awareness.</li>
+            <li>Build sustainable community partnerships.</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size: 0.94rem; color: var(--muted);">Whether you want to volunteer, lead a project, or collaborate with us, our club is open to anyone who wants to contribute with heart and purpose.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="connect" class="section">
+      <h2 class="section-title">Get Involved</h2>
+      <p class="section-description">We welcome new members, partners, and supporters. Reach out to join our next event or learn more about our ongoing programs.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Become a Member</h3>
+          <p>Join our club to develop your skills, gain service experience, and connect with like-minded young leaders.</p>
+        </div>
+        <div class="card">
+          <h3>Volunteer with Us</h3>
+          <p>Volunteer for one-time events or long-term projects that help communities across Pune.</p>
+        </div>
+        <div class="card">
+          <h3>Contact the Club</h3>
+          <p>Send us a message on social media or join a meeting to learn how you can participate.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Leo Club Of Pune Harmony. All rights reserved.</p>
+  </footer>
+</body>
+</html>

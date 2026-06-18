@@ -203,7 +203,7 @@
 <body>
   <header>
     <div class="hero">
-      <img src="images/Screenshot 2026-06-14 175026.png" alt="Leo Club Logo" class="logo-img">
+      <img src="images/logo.png" alt="Leo Club Logo" class="logo-img">
       <p style="text-transform: uppercase; letter-spacing: 0.2em; font-size:0.95rem; opacity:0.85; margin-bottom:18px;">Welcome to Leo Club Of Pune Harmony</p>
       <h1>Building stronger communities through service, leadership, and friendship.</h1>
       <p>Leo Club of Pune Harmony is a youth-led service group dedicated to empowering young people, supporting local causes, and making a positive impact in Pune and beyond.</p>
@@ -274,5 +274,105 @@
   <footer>
     <p>&copy; 2026 Leo Club Of Pune Harmony. All rights reserved.</p>
   </footer>
+  <!-- Lion Snake Game Widget -->
+  <div id="lion-game-widget" title="Play Lion Snake">🦁</div>
+  <div id="lion-game-overlay" style="display:none;">
+    <div id="lion-game-box">
+      <canvas id="lion-canvas" width="300" height="300"></canvas>
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:10px;">
+        <button id="lion-start">Start</button>
+        <button id="lion-close">Close</button>
+      </div>
+      <div id="lion-score" style="text-align:center;margin-top:8px;color:var(--muted);">Score: 0</div>
+    </div>
+  </div>
+  <style>
+    #lion-game-widget{position:fixed;right:18px;bottom:18px;width:60px;height:60px;border-radius:50%;background:#fff;border:3px solid var(--secondary);display:flex;align-items:center;justify-content:center;font-size:30px;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,0.15);z-index:9999}
+    #lion-game-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);z-index:10000}
+    #lion-game-box{background:#fff;padding:18px;border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,0.2);display:flex;flex-direction:column;align-items:center}
+    #lion-canvas{background:linear-gradient(180deg,#f8fbff,#eef6ff);border-radius:8px;border:1px solid rgba(0,0,0,0.06)}
+    #lion-start,#lion-close{padding:8px 12px;border-radius:8px;border:1px solid rgba(15,23,42,0.08);background:#fff;cursor:pointer}
+  </style>
+  <script>
+    (function(){
+      const widget=document.getElementById('lion-game-widget');
+      const overlay=document.getElementById('lion-game-overlay');
+      const startBtn=document.getElementById('lion-start');
+      const closeBtn=document.getElementById('lion-close');
+      const canvas=document.getElementById('lion-canvas');
+      const ctx=canvas.getContext('2d');
+      const scoreEl=document.getElementById('lion-score');
+      let game;
+
+      widget.addEventListener('click',()=>{overlay.style.display='flex'});
+      closeBtn.addEventListener('click',()=>{overlay.style.display='none'; stopGame();});
+      startBtn.addEventListener('click',()=>{startGame()});
+
+      function startGame(){
+        stopGame();
+        game=new LionSnake(canvas,ctx,scoreEl);
+        game.start();
+      }
+      function stopGame(){ if(game) { game.stop(); game=null; scoreEl.textContent='Score: 0'; ctx.clearRect(0,0,canvas.width,canvas.height);} }
+
+      // LionSnake implementation (simple grid snake using emoji for head)
+      class LionSnake{
+        constructor(canvas,ctx,scoreEl){
+          this.canvas=canvas; this.ctx=ctx; this.scoreEl=scoreEl;
+          this.cell=20; this.cols=15; this.rows=15; this.width=this.cell*this.cols; this.height=this.cell*this.rows;
+          this.canvas.width=this.width; this.canvas.height=this.height;
+          this.reset();
+          this.keyQueue=[]; this._tick=null; this.speed=150;
+          this.bind();
+        }
+        bind(){
+          this._keyHandler=(e)=>{
+            const k=e.key.replace('Arrow','').toUpperCase();
+            if(['UP','DOWN','LEFT','RIGHT','W','A','S','D'].includes(k)){
+              this.keyQueue.push(k);
+              e.preventDefault();
+            }
+          };
+          window.addEventListener('keydown',this._keyHandler);
+        }
+        unbind(){ window.removeEventListener('keydown',this._keyHandler); }
+        reset(){
+          this.snake=[{x:7,y:7},{x:6,y:7},{x:5,y:7}];
+          this.dir={x:1,y:0}; this.spawnFood(); this.score=0; this.over=false;
+        }
+        spawnFood(){
+          while(true){
+            const fx=Math.floor(Math.random()*this.cols), fy=Math.floor(Math.random()*this.rows);
+            if(!this.snake.some(s=>s.x===fx && s.y===fy)){ this.food={x:fx,y:fy}; break; }
+          }
+        }
+        start(){ this._tick=setInterval(()=>this.step(), this.speed); }
+        stop(){ clearInterval(this._tick); this.unbind(); }
+        step(){
+          if(this.keyQueue.length){ const k=this.keyQueue.shift(); this.applyKey(k); }
+          const head={x:this.snake[0].x+this.dir.x, y:this.snake[0].y+this.dir.y};
+          // wrap
+          head.x=(head.x+this.cols)%this.cols; head.y=(head.y+this.rows)%this.rows;
+          // collision
+          if(this.snake.some(s=>s.x===head.x && s.y===head.y)) { this.gameOver(); return; }
+          this.snake.unshift(head);
+          if(head.x===this.food.x && head.y===this.food.y){ this.score+=1; this.scoreEl.textContent='Score: '+this.score; this.spawnFood(); } else { this.snake.pop(); }
+          this.draw();
+        }
+        applyKey(k){ const d=(k==='UP'||k==='W')?{x:0,y:-1}:(k==='DOWN'||k==='S')?{x:0,y:1}:(k==='LEFT'||k==='A')?{x:-1,y:0}:{x:1,y:0};
+          if(this.dir.x===-d.x && this.dir.y===-d.y) return; this.dir=d;
+        }
+        draw(){ const ctx=this.ctx, c=this.cell; ctx.clearRect(0,0,this.width,this.height);
+          // draw food
+          ctx.fillStyle='#D4AF37'; ctx.fillRect(this.food.x*c+4, this.food.y*c+4, c-8, c-8);
+          // draw body
+          ctx.fillStyle='#87c165'; for(let i=1;i<this.snake.length;i++){ const s=this.snake[i]; ctx.fillRect(s.x*c+2, s.y*c+2, c-4, c-4); }
+          // draw lion head emoji
+          ctx.font=(c-2)+'px serif'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText('🦁', this.snake[0].x*c + c/2, this.snake[0].y*c + c/2 + 1);
+        }
+        gameOver(){ this.over=true; clearInterval(this._tick); alert('Game Over! Score: '+this.score); }
+      }
+    })();
+  </script>
 </body>
 </html>

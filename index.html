@@ -10,9 +10,9 @@
       --secondary: #d4af37;
       --background: linear-gradient(135deg, var(--primary) 0%, #173a6a 40%, #d4af37 100%);
       --surface: #ffffff;
-      --text: #ffffff;
-      --card-text: #1f2937;
-      --muted: rgba(255,255,255,0.82);
+      --text: #0b1220; /* darker primary text for seriousness */
+      --card-text: #0f1724;
+      --muted: rgba(11,18,32,0.7);
       --radius: 14px;
       --shadow: 0 18px 36px rgba(2, 18, 43, 0.18);
     }
@@ -55,7 +55,7 @@
       margin: 24px auto 0;
       max-width: 760px;
       font-size: 1.08rem;
-      color: rgba(255,255,255,0.92);
+      color: rgba(11,18,32,0.9);
     }
 
     .hero a {
@@ -114,6 +114,8 @@
       margin: 0 auto;
       color: var(--muted);
       font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
     }
 
     .grid {
@@ -139,7 +141,7 @@
 
     .card p {
       margin: 0;
-      color: var(--muted);
+      color: rgba(11,18,32,0.8);
       font-size: 0.97rem;
     }
 
@@ -163,7 +165,7 @@
 
     .full-width-banner p {
       margin: 0;
-      color: var(--muted);
+      color: rgba(11,18,32,0.85);
       font-size: 1rem;
       max-width: 520px;
     }
@@ -178,6 +180,7 @@
       margin-bottom: 14px;
       font-size: 1rem;
       color: var(--text);
+      font-weight: 600;
     }
 
     .feature-list li::before {
@@ -191,8 +194,9 @@
 
     footer {
       text-align: center;
-      color: var(--muted);
+      color: rgba(11,18,32,0.6);
       padding: 26px 24px 40px;
+      font-size: 0.95rem;
     }
 
     @media (max-width: 860px) {
@@ -216,8 +220,8 @@
     .initiative-card{background:var(--surface);color:var(--card-text);padding:16px;border-radius:12px;box-shadow:0 8px 20px rgba(2,18,43,0.06);border:1px solid rgba(15,23,42,0.04);position:relative;cursor:pointer;transition:transform 0.18s ease,box-shadow 0.18s ease}
     .initiative-card::before{content:"🐾";position:absolute;top:10px;right:12px;font-size:18px;transform:rotate(-18deg);filter:drop-shadow(0 2px 2px rgba(0,0,0,0.08))}
     .initiative-card:hover{transform:translateY(-6px);box-shadow:0 18px 38px rgba(2,18,43,0.12)}
-    .initiative-card h4{margin:0 0 8px;color:var(--primary);font-size:1rem}
-    .initiative-card p{margin:0;color:#475569;font-size:0.92rem;line-height:1.35}
+    .initiative-card h4{margin:0 0 8px;color:var(--primary);font-size:1rem;font-weight:700}
+    .initiative-card p{margin:0;color:rgba(11,18,32,0.8);font-size:0.92rem;line-height:1.35}
     .lion-avatar{font-size:44px;line-height:1;padding:6px;border-radius:50%;background:var(--secondary);color:#002855;display:flex;align-items:center;justify-content:center;width:72px;height:72px}
     .lion-text h2{margin:0 0 8px;color:var(--primary)}
     .lion-list{margin:8px 0 0;padding-left:18px;color:var(--text)}
